@@ -1,0 +1,184 @@
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Grup Arge</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+
+</header>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <span data-feather="home"></span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file"></span>
+                            Add Temperature Properties
+                        </a>
+                    </li>
+
+                </ul>
+
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Saved reports</span>
+                    <a class="link-secondary" href="#" aria-label="Add a new report">
+                        <span data-feather="plus-circle"></span>
+                    </a>
+                </h6>
+                <ul class="nav flex-column mb-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file-text"></span>
+                            Example Nav Btn
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file-text"></span>
+                            Example Nav Btn
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file-text"></span>
+                            Example Nav Btn
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file-text"></span>
+                            Example Nav Btn
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Add Property</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group me-2">
+                        <button type="button" (click)="addTemperatureProperty()"
+                            class="btn btn-sm btn-outline-secondary">Add</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="width: 900px;height: 220px; margin-right: 0px;">
+
+                <form [formGroup]="influxAddForm">
+                    <div class="row">
+
+
+                        <div class="mb-3 col">
+                            <fieldset disabled>
+                                <label for="disabledTextInput" class="form-label">Bucket</label>
+                                <input value="lorawan_data" formControlName="bucket" type="text" id="disabledTextInput"
+                                    class="form-control">
+                            </fieldset>
+                        </div>
+                        <div class="mb-3 col">
+                            <fieldset disabled>
+                                <label for="inputDisabled" class="form-label">Org</label>
+                                <input value="GrupArge" formControlName="org" type="text" id="inputDisabled"
+                                    class="form-control">
+                            </fieldset>
+                        </div>
+
+                        <div class="mb-3 col">
+
+                            <label for="measurement" class="form-label">Measurement</label>
+                            <input value="GrupArge" formControlName="measurement" type="text" id="measurement"
+                                class="form-control">
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="mb-3 col">
+                            <label for="host" class="form-label">Host</label>
+                            <input type="text" formControlName="host" class="form-control" id="host">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="usedPercent" class="form-label">Used Percent</label>
+                            <input type="number" formControlName="usedPercent" class="form-control" id="usedPercent">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="time" class="form-label">Time</label>
+                            <input type="datetime-local" formControlName="time" class="form-control" id="time">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+
+            <div
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Add Example</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group me-2">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Example</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <form style="width: 900px;height: 220px; margin-right: 0px;">
+                <div class="row">
+
+
+                    <div class="mb-3 col">
+                        <fieldset disabled>
+                            <label for="exampleInput" class="form-label">Example</label>
+                            <input value="Example" type="text" id="exampleInput" class="form-control">
+                        </fieldset>
+                    </div>
+                    <div class="mb-3 col">
+                        <fieldset disabled>
+                            <label for="exampleInput1" class="form-label">Example</label>
+                            <input value="Example" type="text" id="exampleInput1" class="form-control">
+                        </fieldset>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="mb-3 col">
+                        <label for="exampleInput2" class="form-label">Example</label>
+                        <input type="text" class="form-control" id="exampleInput2" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3 col">
+                        <label for="exampleInput3" class="form-label">Example</label>
+                        <input type="number" class="form-control" id="exampleInput3">
+                    </div>
+                    <div class="mb-3 col">
+                        <label for="exampleInput4" class="form-label">Example</label>
+                        <input type="datetime-local" class="form-control" id="exampleInput5">
+                    </div>
+
+                </div>
+
+            </form>
+
+
+
+        </main>
+
+
+    </div>
+</div>

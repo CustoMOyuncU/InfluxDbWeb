@@ -10,6 +10,7 @@ import { TemperatureService } from 'src/app/services/temperature.service';
 })
 export class TemperatureAddComponent implements OnInit {
   influxAddForm: FormGroup;
+  influxDeleteForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -19,16 +20,25 @@ export class TemperatureAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.createInfluxAddMemForm();
+    this.createInfluxDeleteForm();
   }
 
   createInfluxAddMemForm() {
     this.influxAddForm = this.formBuilder.group({
       host: ['', Validators.required],
-      measurement:["",Validators.required],
+      measurement: ['', Validators.required],
       bucket: ['lorawan_data', Validators.required],
       org: ['GrupArge', Validators.required],
       usedPercent: ['', Validators.required],
       time: ['', Validators.required],
+    });
+  }
+
+  createInfluxDeleteForm() {
+    this.influxDeleteForm = this.formBuilder.group({
+      start: ['', Validators.required],
+      stop: ['', Validators.required],
+      measurement: ['', Validators.required],
     });
   }
 
@@ -45,4 +55,27 @@ export class TemperatureAddComponent implements OnInit {
       this.toastrService.error('Formunuz Eksik', 'Hata');
     }
   }
+
+  deleteTemperatureProperty(){
+    
+    console.log(this.influxDeleteForm)
+    if (this.influxDeleteForm.valid) {
+      let influxDeleteModel = Object.assign({}, this.influxDeleteForm.value);
+
+      if (influxDeleteModel.stop < influxDeleteModel.start) {
+        this.toastrService.error('Check your date', 'Date Error');
+        return;
+      }
+      
+      this.temperatureService.deleteTemperatureProperties(influxDeleteModel).subscribe(response=>{
+        this.toastrService.info("Data between dates has been deleted","System")
+      },responseError=>{
+        this.toastrService.error("Check your date","Date Error")
+      })
+      
+    }else{
+      this.toastrService.error("Form is missing","Error")
+    }
+  }
+
 }

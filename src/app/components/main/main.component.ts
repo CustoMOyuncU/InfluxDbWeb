@@ -13,7 +13,7 @@ declare var startsth:any
 export class MainComponent implements OnInit {
   temperatures:Temperature[]
   number:number[]=[]
-  
+  filterText:string
 
   constructor(
     private toastrService: ToastrService,
@@ -24,8 +24,6 @@ export class MainComponent implements OnInit {
     this.getTemperatureProperties()
     console.log(document.getElementById("tableOfTemperature"))
   }
-
-
 
   startsth(){
     new startsth(this.temperatures)

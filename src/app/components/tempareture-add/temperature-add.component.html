@@ -22,7 +22,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="file"></span>
-                            Add Temperature Properties
+                            Manage Temperature Properties
                         </a>
                     </li>
 
@@ -84,14 +84,14 @@
 
                         <div class="mb-3 col">
                             <fieldset disabled>
-                                <label for="disabledTextInput" class="form-label">Bucket</label>
+                                <label for="disabledTextInput" class="form-label">Bucket Name</label>
                                 <input value="lorawan_data" formControlName="bucket" type="text" id="disabledTextInput"
                                     class="form-control">
                             </fieldset>
                         </div>
                         <div class="mb-3 col">
                             <fieldset disabled>
-                                <label for="inputDisabled" class="form-label">Org</label>
+                                <label for="inputDisabled" class="form-label">Organization Name</label>
                                 <input value="GrupArge" formControlName="org" type="text" id="inputDisabled"
                                     class="form-control">
                             </fieldset>
@@ -128,49 +128,48 @@
 
             <div
                 class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Add Example</h1>
+                <h1 class="h2">Delete Properties</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group me-2">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Example</button>
+                        <button type="button" (click)="deleteTemperatureProperty()" class="btn btn-sm btn-outline-secondary">Delete</button>
                     </div>
 
                 </div>
             </div>
 
-            <form style="width: 900px;height: 220px; margin-right: 0px;">
+            <form [formGroup]="influxDeleteForm" style="width: 900px;height: 220px; margin-right: 0px;">
                 <div class="row">
 
 
                     <div class="mb-3 col">
                         <fieldset disabled>
-                            <label for="exampleInput" class="form-label">Example</label>
-                            <input value="Example" type="text" id="exampleInput" class="form-control">
+                            <label for="deleteBucket" class="form-label">Bucket Name</label>
+                            <input value="lorawan_data" type="text" id="deleteBucket" class="form-control">
                         </fieldset>
                     </div>
                     <div class="mb-3 col">
                         <fieldset disabled>
-                            <label for="exampleInput1" class="form-label">Example</label>
-                            <input value="Example" type="text" id="exampleInput1" class="form-control">
+                            <label for="deleteOrg" class="form-label">Organization Name</label>
+                            <input value="GrupArge" type="text" id="deleteOrg" class="form-control">
                         </fieldset>
                     </div>
 
                 </div>
 
                 <div class="row">
-
                     <div class="mb-3 col">
-                        <label for="exampleInput2" class="form-label">Example</label>
-                        <input type="text" class="form-control" id="exampleInput2" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3 col">
-                        <label for="exampleInput3" class="form-label">Example</label>
-                        <input type="number" class="form-control" id="exampleInput3">
-                    </div>
-                    <div class="mb-3 col">
-                        <label for="exampleInput4" class="form-label">Example</label>
-                        <input type="datetime-local" class="form-control" id="exampleInput5">
+                        <label for="measurement1" class="form-label">Measurement</label>
+                        <input type="text" formControlName="measurement" class="form-control" id="measurement1">
                     </div>
 
+                    <div class="mb-3 col">
+                        <label for="deleteStartDate" class="form-label">Start Date</label>
+                        <input type="datetime-local" formControlName="start" class="form-control" id="deleteStartDate">
+                    </div>
+                    <div class="mb-3 col">
+                        <label for="deleteStopDate" class="form-label">Stop Date</label>
+                        <input type="datetime-local" formControlName="stop" class="form-control" id="deleteStopDate">
+                    </div>
                 </div>
 
             </form>

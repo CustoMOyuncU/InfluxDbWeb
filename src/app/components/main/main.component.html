@@ -4,7 +4,7 @@
         data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <input [(ngModel)]="filterText" class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     
 
 </header>
@@ -23,7 +23,7 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/admin/add/temperature-property">
                             <span data-feather="file"></span>
-                            Add Temperature Properties
+                            Manage Temperature Properties
                         </a>
                     </li>
 
@@ -100,7 +100,7 @@
                         </tr>
                     </thead>
                     <tbody id="tableOfTemperature">
-                        <tr *ngFor="let temperature of temperatures">
+                        <tr *ngFor="let temperature of temperatures |filterText:filterText">
                             <td></td>
                             <td>{{temperature.start| date:"yyyy-MM-dd h:mm:ss"}}</td>
                             <td>{{temperature.stop | date:"yyyy-MM-dd h:mm:ss"}}</td>

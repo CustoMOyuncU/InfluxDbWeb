@@ -18,9 +18,10 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
   <script src="https://getbootstrap.com/docs/5.1/examples/dashboard/dashboard.js"></script>
   <script>
-    var numbers = []
-    var time = []
+
     function startsth(temperatureProperties) {
+      var numbers = []
+      var time = []
       for (let i = 0; i < temperatureProperties.length; i++) {
         time.push(temperatureProperties[i].time);
         numbers.push(temperatureProperties[i].value);

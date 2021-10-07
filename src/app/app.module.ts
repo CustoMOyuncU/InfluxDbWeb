@@ -9,12 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
 import { TemperatureAddComponent } from './components/tempareture-add/temperature-add.component';
+import { FilterTextPipe } from './pipes/filter-text.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    TemperatureAddComponent
+    TemperatureAddComponent,
+    FilterTextPipe
   ],
   imports: [
     BrowserModule,

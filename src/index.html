@@ -30,6 +30,7 @@
       var ctxL = document.getElementById("lineChart").getContext('2d');
       var myLineChart = new Chart(ctxL, {
         type: 'line',
+
         data: {
           labels: time,
           datasets: [{
@@ -48,16 +49,16 @@
         options: {
           responsive: true,
           scales: {
-        yAxes: [{
-            display: true,
-            ticks: {
-              stepSize: 1,
-                suggestedMin: 15,    // minimum will be 0, unless there is a lower value.
+            yAxes: [{
+              display: true,
+              ticks: {
+                stepSize: .5,
+                suggestedMin: 20,    // minimum will be 0, unless there is a lower value.
                 // OR //
-                suggestedMax:30
-            }
-        }]
-    }
+                suggestedMax: 25
+              }
+            }]
+          }
         }
       });
 

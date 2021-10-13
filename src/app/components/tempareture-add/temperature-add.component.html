@@ -71,6 +71,8 @@
                     <div class="btn-group me-2">
                         <button type="button" (click)="addTemperatureProperty()"
                             class="btn btn-sm btn-outline-secondary">Add</button>
+                            <button type="button" (click)="addRandomTemperaturePropertiesBackEnd()"
+                            class="btn btn-sm btn-outline-secondary">Add 10M Random Item</button>
                     </div>
 
                 </div>
@@ -100,7 +102,7 @@
                         <div class="mb-3 col">
 
                             <label for="measurement" class="form-label">Measurement</label>
-                            <input value="GrupArge" formControlName="measurement" type="text" id="measurement"
+                            <input formControlName="measurement" type="text" id="measurement"
                                 class="form-control">
 
                         </div>

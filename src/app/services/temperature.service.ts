@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ListResponseModel } from '../models/listResponseModel';
 import { Mem } from '../models/mem';
 import { ResponseModel } from '../models/responseModel';
 import { Temperature } from '../models/temperature';
@@ -20,16 +21,28 @@ export class TemperatureService {
     return this.httpClient.get<Temperature[]>(this.apiUrl + 'gettemperature');
   }
 
-  getTemperatureSettingsWithParam(a:string): Observable<Temperature[]> {
+  /* getTemperatureSettingsWithParam(a:string): Observable<Temperature[]> {
     return this.httpClient.get<Temperature[]>(this.apiUrl + 'gettemperature?time='+a);
+  } */
+
+  addTemeratureProperty(mem: Mem): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(
+      this.apiUrl + 'addtemperatureproperty',
+      mem
+    );
   }
 
-  addTemeratureProperties(mem: Mem): Observable<ResponseModel> {
+  addTemeratureProperties(mem: Mem[]): Observable<ResponseModel> {
     return this.httpClient.post<ResponseModel>(
       this.apiUrl + 'addtemperatureproperties',
       mem
     );
   }
+
+  addRandomTemeraturePropertiesBackEnd(): Observable<ListResponseModel<Mem>> {
+    return this.httpClient.get<ListResponseModel<Mem>>(this.apiUrl + 'addtemperatureproperties');
+  }
+
   deleteTemperatureProperties(temperature: Temperature) {
     let start = new Date(temperature.start).toISOString();
     let stop = new Date(temperature.stop).toISOString();
@@ -47,4 +60,8 @@ export class TemperatureService {
       { headers: headers }
     );
   }
+
+  /* deleteTemperatureProperty(temperature:Temperature){
+    return this.httpClient.post(this.apiUrl+"deletetemperatureproperties",temperature)
+  } */
 }

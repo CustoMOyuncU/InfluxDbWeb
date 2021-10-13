@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -61,10 +62,11 @@ export class TemperatureAddComponent implements OnInit {
   addRandomTemperaturePropertiesBackEnd(){
     this.toastrService.info("Processing...","System")
     this.temperatureService.addRandomTemeraturePropertiesBackEnd().subscribe(response=>{
-      console.log(response)
+      console.log(response.message)
       this.toastrService.success("Operation complete","Random Data Added")
     })
   }
+  
 
   addRandomTemperatureProperties(){
     for (let i = 0; i < 5000; i++) {

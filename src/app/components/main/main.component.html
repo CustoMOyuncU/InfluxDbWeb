@@ -4,8 +4,9 @@
         data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input [(ngModel)]="filterText" class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    
+    <input [(ngModel)]="filterText" class="form-control form-control-dark w-100" type="text" placeholder="Search"
+        aria-label="Search">
+
 
 </header>
 
@@ -67,7 +68,12 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div
                 class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
+                <h1 class="h2" style="display: inline-block;">Dashboard<div style="display: inline-block; font-size: 17px;" *ngIf="dashboardSpinner" id="spinnerGroup">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                </div></h1>
+                
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group me-2">
                         <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -84,9 +90,14 @@
 
             <canvas id="lineChart" class="my-4 w-100 chartjs-render-monitor"></canvas>
 
-
-            <h2>Section title</h2>
-            <div  class="table-responsive">
+            
+            <h2 style="display: inline-block;">Data Values</h2>
+            <div style="display: inline-block; margin-left: 10px;" *ngIf="dataTableSpinner" id="spinnerGroup">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+            </div>
+            <div class="table-responsive">
                 <table class="table table-striped table-sm text-center">
                     <thead>
                         <tr>

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Temperature } from 'src/app/models/temperature';
 import { TemperatureService } from 'src/app/services/temperature.service';
-declare var getsth:any
 declare var startsth:any
 
 @Component({
@@ -14,6 +13,8 @@ export class MainComponent implements OnInit {
   temperatures:Temperature[]
   number:number[]=[]
   filterText:string
+  dataTableSpinner:boolean = true
+  dashboardSpinner:boolean = true
 
   constructor(
     private toastrService: ToastrService,
@@ -22,7 +23,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTemperatureProperties()
-    console.log(document.getElementById("tableOfTemperature"))
   }
 
   startsth(){
@@ -32,9 +32,19 @@ export class MainComponent implements OnInit {
   getTemperatureProperties() {
     this.temperatureService.getTemperatureSettings().subscribe((response) => {
       this.temperatures = response;
-      this.toastrService.info("Data get complete","Data Arrived")
+      this.toastrService.info("Data get complete ("+this.temperatures.length+")","Data Arrived")
+      this.dataTableSpinner=false
       
-      startsth(this.temperatures)
+      if (this.temperatures.length>=100) {
+        this.toastrService.info("Could not fetch Dashboard because there is too much data","Dashboard Cannot Get")
+        this.dashboardSpinner=false
+        document.getElementById("lineChart").remove()
+      }else{
+        startsth(this.temperatures)
+        this.dashboardSpinner=false
+      }
+      
+      
     },responseError=>{
       this.toastrService.error("Data get unsuccessful","Error")
     });

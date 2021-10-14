@@ -1,5 +1,5 @@
 var ctx = document.querySelector("#lineChart")
-console.log(ctx)
+
 var myChart = new Chart(ctx, {
 type: 'bar',
 data: {

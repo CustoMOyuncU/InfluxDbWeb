@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -45,7 +46,6 @@ export class TemperatureAddComponent implements OnInit {
   }
 
   addTemperatureProperty() {
-    console.log(this.influxAddForm);
     if (this.influxAddForm.valid) {
       let influxAddModel = Object.assign({}, this.influxAddForm.value);
       this.temperatureService
@@ -61,10 +61,10 @@ export class TemperatureAddComponent implements OnInit {
   addRandomTemperaturePropertiesBackEnd(){
     this.toastrService.info("Processing...","System")
     this.temperatureService.addRandomTemeraturePropertiesBackEnd().subscribe(response=>{
-      console.log(response)
       this.toastrService.success("Operation complete","Random Data Added")
     })
   }
+  
 
   addRandomTemperatureProperties(){
     for (let i = 0; i < 5000; i++) {
@@ -101,8 +101,6 @@ export class TemperatureAddComponent implements OnInit {
   }
 
   deleteTemperatureProperty(){
-    
-    console.log(this.influxDeleteForm)
     if (this.influxDeleteForm.valid) {
       let influxDeleteModel = Object.assign({}, this.influxDeleteForm.value);
 

@@ -49,8 +49,7 @@ export class TemperatureService {
 
     var perdicate = "from(bucket:\"lorawan_data\")\n"
     + "|> filter(fn: (r) => r[\"_measurement\"] == \""+temperature.measurement+"\")\n"
-    console.log(perdicate)
-    console.log({ start: start, stop: stop, perdicate: perdicate.toString() })
+    
     const headers = new HttpHeaders()
       .set('Authorization', 'Token ' + this.token)
       .set('Content-Type', 'application/json');
